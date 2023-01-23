@@ -1,0 +1,22 @@
+<div class="row">
+  <table class="table table-bordered mt-5 col-6">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dipendente of servizioDipendente.dipendenti;"
+          [ngClass]="dipendente.id % 2 === 0 ? 'tr-even' : 'tr-odd'">
+        <th scope="row" class="dipendent_id" (click)="getNameAndBirthday(selectedId)"><span #selectedId role="button"> {{ dipendente.id  }}</span></th>
+        <td class="fw-bold">{{ dipendente.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="detailDipendente" class="col-6" *ngIf="display">
+    <app-dipendente-dettaglio [dipendent]="dipendente"></app-dipendente-dettaglio>
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+input {
+  background-color: rgb(242 242 242);
+  width: 60%;
+}
+
+/* btn-container */
+.btn-container {
+  display: flex;
+  justify-content: right;
+  margin-right: 16rem;
+}
+
+.btn-container button:first-child {
+  color: white;
+}
+
+.btn-container > button {
+  border-color: rgb(47 82 143);
+  padding: 8px 40px;
+  font-size: 22px;
+}
+
