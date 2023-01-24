@@ -1,4 +1,6 @@
 <div class="details-container">
-  <div class="mb-4" *ngIf="dipendent.nome">{{ dipendent.nome }}</div><br>
-  <div *ngIf="dipendent.dataNascita">{{ dipendent.dataNascita | customDate}}</div>
+  <h1 class="mt-4 mb-4">Pagina dettaglio</h1>
+  <div class="mb-4">{{ (dipendent.nome !== '') ? (dipendent.nome) : 'Nessun nome' }}</div><br>
+  <div >{{ dipendent.dataNascita | customDate }}</div>
+  <button type="button" class="btn btn-danger d-block mt-4" routerLink="" routerLinkActive="active">Ritorna pagina Home</button>
 </div>

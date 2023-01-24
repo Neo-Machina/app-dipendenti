@@ -1,5 +1,6 @@
 
 <!-- first-row -->
+<h1 class="mt-4">Pagina Aggiungi</h1>
 <div class="row mb-4">
   <div class="col">
     <label for="d-nome" class="fw-bold">Nome</label><br>
@@ -17,7 +18,7 @@
   <div class="col">
     <label for="d-data-nascita" class="fw-bold">Data di Nascita</label><br>
     <input type="date" id="d-data-nascita" name="d-data-nascita" class="form-control form-control-lg border-dark"
-            [(ngModel)]="birthday">
+            [(ngModel)]="birthday" (click)="clickB($event)">
   </div>
   <div class="col">
     <label for="d-email" class="fw-bold">Email</label><br>
@@ -29,6 +30,7 @@
 <div class="btn-container">
   <button type="button" class="btn btn-warning me-4" (click)="resetFields()">Reset</button>
   <button type="button" class="btn btn-primary" (click)="getInputValue()">Aggiungi</button>
+  <button type="button" class="btn btn-danger ms-4" routerLink="" routerLinkActive="active">Ritorna pagina Home</button>
 </div>
 
 

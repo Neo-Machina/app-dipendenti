@@ -16,8 +16,8 @@ export class DipendenteAggiungiComponent implements OnInit, OnChanges {
   constructor(public servizioDipendente: DipendenteServiceService){}
 
   getInputValue() {
-    console.log(this.name)
     this.servizioDipendente.dipendenti.push(new Dipendente(this.servizioDipendente.dipendenti.length +1, this.name, this.lastName, this.e_mail, new Date(this.birthday)))
+
   }
 
   resetFields() {
@@ -32,5 +32,9 @@ export class DipendenteAggiungiComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
 
+  }
+
+  clickB(event: Event) {
+    console.log(event)
   }
 }

@@ -1,4 +1,5 @@
 <div class="row">
+  <h1 class="mt-4">Lista e dettagli</h1>
   <table class="table table-bordered mt-5 col-6">
     <thead>
       <tr>
@@ -9,14 +10,16 @@
     <tbody>
       <tr *ngFor="let dipendente of servizioDipendente.dipendenti;"
           [ngClass]="dipendente.id % 2 === 0 ? 'tr-even' : 'tr-odd'">
-        <th scope="row" class="dipendent_id" (click)="getNameAndBirthday(selectedId)"><span #selectedId role="button"> {{ dipendente.id  }}</span></th>
+        <th scope="row" class="dipendent_id" (click)="getId(dipendente.id)"><span #selectedId role="button"> {{ dipendente.id  }}</span></th>
         <td class="fw-bold">{{ dipendente.email }}</td>
       </tr>
     </tbody>
   </table>
 
   <div id="detailDipendente" class="col-6" *ngIf="display">
-    <app-dipendente-dettaglio [dipendent]="dipendente"></app-dipendente-dettaglio>
+    <app-dipendente-dettaglio></app-dipendente-dettaglio>
   </div>
 </div>
+
+<button type="button" class="btn btn-danger ms-4" routerLink="" routerLinkActive="active">Ritorna pagina Home</button>
 
