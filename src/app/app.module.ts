@@ -11,12 +11,16 @@ import { registerLocaleData } from '@angular/common';
 import localIt from '@angular/common/locales/it';
 import { HomeComponent } from './components/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 registerLocaleData(localIt);
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'aggiungi', component: DipendenteAggiungiComponent },
+  { path: 'form-dinamico', component: DynamicFormComponent },
   { path: 'lista-dettagli', component: DipendenteListaComponent },
   { path: 'dettaglio/:indice', component: DipendenteDettaglioComponent},
   { path: '**', component: HomeComponent },
@@ -29,10 +33,13 @@ const routes: Routes = [
     DipendenteDettaglioComponent,
     CustomDatePipe,
     HomeComponent,
+    DynamicFormComponent,
+    CustomInputComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     [RouterModule.forRoot(routes)]
   ],
   exports: [RouterModule],

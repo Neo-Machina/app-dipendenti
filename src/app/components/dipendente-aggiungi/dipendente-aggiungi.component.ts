@@ -17,7 +17,6 @@ export class DipendenteAggiungiComponent implements OnInit, OnChanges {
 
   getInputValue() {
     this.servizioDipendente.dipendenti.push(new Dipendente(this.servizioDipendente.dipendenti.length +1, this.name, this.lastName, this.e_mail, new Date(this.birthday)))
-
   }
 
   resetFields() {
