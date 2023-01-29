@@ -1,1 +1,7 @@
-<form ></form>
+<div *ngFor="let alias of aliases.controls; let i=index" class="col-6">
+
+  <label for="alias-{{ i }}" class="fw-bold">{{formDipendente.controls['label'].value}}:</label><br>
+  <input id="alias-{{ i }}" [type]="formDipendente.controls['ngSelect'].value" [formControlName]="i" [class]="formDipendente.controls['class'].value">
+</div>
+
+

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormGroup, FormControl, FormBuilder, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-input',
@@ -7,13 +7,17 @@ import { FormArray, FormGroup } from '@angular/forms';
   styleUrls: ['./custom-input.component.css']
 })
 export class CustomInputComponent implements OnInit{
-  @Input() tipo!: string | null;
-  @Input() classe!: string | null;
-  @Input() etichetta!: string | null;
+  // @Input() tipo!: string | null;
+  // @Input() classe!: string | null;
+  // @Input() etichetta!: string | null;
+  @Input() aliases!: any;
+  @Input() formDipendente!: FormGroup;
 
-  constructor() {}
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    console.log(this.formDipendente.controls['aliases']);
   }
 
 

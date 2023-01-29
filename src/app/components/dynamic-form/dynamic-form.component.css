@@ -1,3 +1,8 @@
 .col .btn-success {
   width: 35%;
 }
+
+.form_container {
+  margin: 0 auto;
+  width: 60%;
+}

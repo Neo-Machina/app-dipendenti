@@ -1,29 +1,33 @@
 <div class="container">
   <h2 class="mt-4">Form Dinamico</h2>
-  <form class="row" [formGroup]="dipendentForm">
-    <div class="col">
-      <label for="type" class="mb-2 fw-bold fs-5">Type</label><br>
-      <select class="form-select" name="type" id="type" formControlName="ngSelect">
-        <option *ngFor="let type of typeList; let i = index"  [value]="type">{{type}}</option>
-      </select>
+  <form [formGroup]="dipendentForm" (submit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <label for="type" class="mb-2 fw-bold fs-5">Type</label><br>
+        <select class="form-select" name="type" id="type" formControlName="ngSelect">
+          <option *ngFor="let type of typeList; let i = index"  [value]="type">{{type}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="label" class="mb-2 fw-bold fs-5">Label</label><br>
+        <input type="text" class="form-control" name="label" id="label" formControlName="label">
+      </div>
+      <div class="col">
+        <label for="class" class="mb-2 fw-bold fs-5">Class</label><br>
+        <input type="text" class="form-control" name="class" id="class" formControlName="class">
+      </div>
+      <div formArrayName="aliases" class="col d-flex">
+        <button type="button" class="btn btn-success align-self-end" (click)="addAlias()">+</button>
+      </div>
     </div>
-    <div class="col">
-      <label for="label" class="mb-2 fw-bold fs-5">Label</label><br>
-      <input type="text" class="form-control" name="label" id="label" formControlName="label">
-    </div>
-    <div class="col">
-      <label for="class" class="mb-2 fw-bold fs-5">Class</label><br>
-      <input type="text" class="form-control" name="class" id="class" formControlName="class">
-    </div>
-    <div class="col d-flex">
-      <button type="button" class="btn btn-success align-self-end" (click)="addInput()">+</button>
+
+    <div class="form_container mt-5" *ngIf="isDisplay">
+      <app-custom-input class="row" [formDipendente]="dipendentForm" [aliases]="aliases"></app-custom-input>
+
+      <div class="my_buttons d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+        <button type="button" class="btn btn-warning ms-3" (click)="onReset()">Reset</button>
+      </div>
     </div>
   </form>
-
-  <div *ngIf="isDisplay">
-    <app-custom-input [classe]="dipendentForm.controls.class.value"
-                      [tipo]="dipendentForm.controls.ngSelect.value"
-                      [etichetta]="dipendentForm.controls.label.value">
-    </app-custom-input>
-  </div>
 </div>
