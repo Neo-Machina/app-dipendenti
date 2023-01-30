@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -17,37 +17,51 @@ export class DynamicFormComponent implements OnInit{
     'number'
   ];
 
+  lista: Array<any> = [];
 
   dipendentForm = new FormGroup({
     class: new FormControl(''),
     label: new FormControl(''),
-    ngSelect: new FormControl(this.typeList[0]),
-    aliases: this.fb.array([
-    ])
+    ngSelect: new FormControl(this.typeList[0])
+  });
+
+  aliasForm = this.fb.group({
+    aliases: this.fb.array([])
   });
 
   constructor(private fb: FormBuilder) {}
 
   get aliases() {
-    return this.dipendentForm.get('aliases') as FormArray;
+    return this.aliasForm.get('aliases') as FormArray;
   };
 
   addAlias() {
-    // this.aliases.push(this.fb.control(this.dipendentForm.controls.ngSelect.value));
-    // this.aliases.push(this.fb.control(this.dipendentForm.controls.label.value));
-    // this.aliases.push(this.fb.contol(this.dipendentForm.controls.class.value));
     this.aliases.push(this.fb.control(''));
+    this.lista.push({
+      type: this.dipendentForm.controls.ngSelect.value,
+      label: this.dipendentForm.controls.label.value,
+      class: this.dipendentForm.controls.class.value
+    });
+    this.dipendentForm.reset({
+      'class': '',
+      'label': '',
+      'ngSelect': this.typeList[0]
+    })
+
     this.isDisplay = true;
+
   };
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.dipendentForm);
+    console.log(this.aliasForm.controls.aliases.value);
   }
 
   onReset() {
-
+    this.aliases.clear();
+    this.lista = [];
+    this.isDisplay = false;
   }
 }

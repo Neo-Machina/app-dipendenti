@@ -1,31 +1,39 @@
 <div class="container">
   <h2 class="mt-4">Form Dinamico</h2>
-  <form [formGroup]="dipendentForm" (submit)="onSubmit()">
+  <form [formGroup]="dipendentForm">
     <div class="row">
-      <div class="col">
+      <div class="col-3">
         <label for="type" class="mb-2 fw-bold fs-5">Type</label><br>
-        <select class="form-select" name="type" id="type" formControlName="ngSelect">
+        <select class="form-select" name="type" id="type" formControlName="ngSelect" #type>
           <option *ngFor="let type of typeList; let i = index"  [value]="type">{{type}}</option>
         </select>
       </div>
-      <div class="col">
+      <div class="col-3">
         <label for="label" class="mb-2 fw-bold fs-5">Label</label><br>
-        <input type="text" class="form-control" name="label" id="label" formControlName="label">
+        <input type="text" class="form-control" name="label" id="label" formControlName="label" #label>
       </div>
-      <div class="col">
+      <div class="col-3">
         <label for="class" class="mb-2 fw-bold fs-5">Class</label><br>
-        <input type="text" class="form-control" name="class" id="class" formControlName="class">
+        <input type="text" class="form-control" name="class" id="class" formControlName="class" #class>
       </div>
-      <div formArrayName="aliases" class="col d-flex">
+      <div class="col d-flex">
         <button type="button" class="btn btn-success align-self-end" (click)="addAlias()">+</button>
       </div>
     </div>
+  </form>
 
-    <div class="form_container mt-5" *ngIf="isDisplay">
-      <app-custom-input class="row" [formDipendente]="dipendentForm" [aliases]="aliases"></app-custom-input>
+  <form [formGroup]="aliasForm" (ngSubmit)="onSubmit()">
+    <div class="form_container mt-5" *ngIf="isDisplay" formArrayName="aliases">
+      <div class="row">
+        <div *ngFor="let alias of lista; let i=index" class="col-6">
+
+          <label for="alias-{{ i }}" class="fw-bold">{{ alias.label }}</label><br>
+          <input id="alias-{{ i }}" [type]="alias.type" formControlName="{{i}}" [class]="alias.class">
+        </div>
+      </div>
 
       <div class="my_buttons d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-warning ms-3" (click)="onReset()">Reset</button>
       </div>
     </div>

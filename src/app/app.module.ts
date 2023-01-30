@@ -13,7 +13,6 @@ import { HomeComponent } from './components/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CustomInputComponent } from './components/custom-input/custom-input.component';
 
 registerLocaleData(localIt);
 
@@ -34,7 +33,6 @@ const routes: Routes = [
     CustomDatePipe,
     HomeComponent,
     DynamicFormComponent,
-    CustomInputComponent,
   ],
   imports: [
     BrowserModule,
