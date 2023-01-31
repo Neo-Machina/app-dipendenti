@@ -4,17 +4,17 @@
     <div class="row">
       <div class="col-3">
         <label for="type" class="mb-2 fw-bold fs-5">Type</label><br>
-        <select class="form-select" name="type" id="type" formControlName="ngSelect" #type>
+        <select class="form-select" name="type" id="type" formControlName="ngSelect">
           <option *ngFor="let type of typeList; let i = index"  [value]="type">{{type}}</option>
         </select>
       </div>
       <div class="col-3">
         <label for="label" class="mb-2 fw-bold fs-5">Label</label><br>
-        <input type="text" class="form-control" name="label" id="label" formControlName="label" #label>
+        <input type="text" class="form-control" name="label" id="label" formControlName="label">
       </div>
       <div class="col-3">
         <label for="class" class="mb-2 fw-bold fs-5">Class</label><br>
-        <input type="text" class="form-control" name="class" id="class" formControlName="class" #class>
+        <input type="text" class="form-control" name="class" id="class" formControlName="class">
       </div>
       <div class="col d-flex">
         <button type="button" class="btn btn-success align-self-end" (click)="addAlias()">+</button>

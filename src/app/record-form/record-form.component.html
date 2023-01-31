@@ -1,0 +1,85 @@
+<div class="container">
+  <h2 class="mt-4">Form Record</h2>
+  <form [formGroup]="formDipendente" (submit)="onSubmit()">
+      <!-- Record Anagrafica -->
+      <fieldset formGroupName="anagrafica">
+        <legend class="fw-bold">Anagrafica</legend>
+        <!-- control Nome -->
+        <div >
+          <label for="nome" class="mb-2 fs-5">Nome</label><br>
+          <input type="text" class="form-control" name="nome" id="nome" formControlName="nome">
+        </div>
+        <!-- validazioni nome -->
+        <div *ngIf="anagrafica.controls['nome'].invalid && (anagrafica.controls['nome'].dirty || anagrafica.controls['nome'].touched)"
+            class="alert alert-danger">
+
+          <div *ngIf="anagrafica.controls['nome'].errors?.['required']">
+            Il nome è richiesto
+          </div>
+          <div *ngIf="anagrafica.controls['nome'].errors?.['minlength']">
+            Il nome deve essere lungo almeno tre caretti.
+          </div>
+        </div>
+        <!-- control Cognome -->
+        <div >
+          <label for="cognome" class="mb-2 fs-5">Cognome</label><br>
+          <input type="text" class="form-control" name="cognome" id="cognome" formControlName="cognome">
+        </div>
+        <!-- validazioni cognome -->
+        <div *ngIf="anagrafica.controls['cognome'].invalid && (anagrafica.controls['cognome'].dirty || anagrafica.controls['cognome'].touched)"
+            class="alert alert-danger">
+
+          <div *ngIf="anagrafica.controls['cognome'].errors?.['required']">
+            Il cognome è richiesto
+          </div>
+          <div *ngIf="anagrafica.controls['cognome'].errors?.['minlength']">
+            Il cognome deve essere lungo almeno tre caretti.
+          </div>
+        </div>
+        <!-- control Data di nascita -->
+        <div >
+          <label for="dataNascita" class="mb-2 fs-5">Data di nascita</label><br>
+          <input type="date" class="form-control dataNascita" name="dataNascita" id="dataNascita" formControlName="dataNascita">
+        </div>
+        <!-- validazione data di nascita -->
+        <div *ngIf=" (!anagrafica.controls['dataNascita'].dirty && anagrafica.controls['dataNascita'].touched)"
+            class="alert alert-danger">
+            La data di nascita è richiesta
+        </div>
+      </fieldset>
+      <!-- record altreInfo -->
+      <fieldset formGroupName="altreInfo">
+        <legend class="fw-bold">Altre informazioni</legend>
+        <!-- control Email -->
+        <div >
+          <label for="email" class="mb-2 fs-5">Email</label><br>
+          <input type="email" class="form-control" name="email" id="email" formControlName="email">
+        </div>
+        <!-- validazioni email -->
+        <div *ngIf="altreInfo.controls['email'].invalid && (altreInfo.controls['email'].dirty || altreInfo.controls['email'].touched)"
+            class="alert alert-danger">
+
+          <div *ngIf="altreInfo.controls['email'].errors?.['required']">
+            L'email  è richiesta
+          </div>
+          <div *ngIf="altreInfo.controls['email'].errors?.['email']">
+            Il testo deve essere una email
+          </div>
+        </div>
+        <!-- formArray Hobby -->
+        <div formArrayName="hobbies" >
+          <div *ngFor="let hobby of hobbies.controls; let i= index">
+            <div class="d-flex">
+              <label for="hobby-{{i}}" class="fs-5">Hobby {{i + 1}}:</label><br>
+              <button class="btn btn-danger ms-3" type="button" (click)="removeHobby(i)" *ngIf="i != 0">X</button>
+            </div>
+            <input type="text" class="form-control mt-3 hobby_input" id="hobby-{{i}}" name="hobbies" formControlName="{{i}}">
+          </div>
+        </div>
+        <button class="btn btn-success d-block mt-3" type="button" (click)="addHobby()">Aggiungi hobby</button>
+
+      </fieldset>
+
+      <button class="btn btn-primary mt-3" type="submit" [disabled]="!formDipendente.valid">Invia</button>
+  </form>
+</div>

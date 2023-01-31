@@ -1,0 +1,22 @@
+input {
+  margin-bottom: 10px;
+}
+.hobby_input {
+  width: 15rem;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+input.ng-valid.ng-touched {
+  border-color: green;
+}
+
+.dataNascita.ng-valid.ng-touched {
+  border-color: red;
+}
+
+.dataNascita.ng-valid.ng-touched.ng-dirty {
+  border-color: green;
+}

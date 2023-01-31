@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecordFormComponent } from './record-form/record-form.component';
 
 registerLocaleData(localIt);
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'aggiungi', component: DipendenteAggiungiComponent },
   { path: 'form-dinamico', component: DynamicFormComponent },
+  { path: 'form-record', component: RecordFormComponent },
   { path: 'lista-dettagli', component: DipendenteListaComponent },
   { path: 'dettaglio/:indice', component: DipendenteDettaglioComponent},
   { path: '**', component: HomeComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
     CustomDatePipe,
     HomeComponent,
     DynamicFormComponent,
+    RecordFormComponent,
   ],
   imports: [
     BrowserModule,
